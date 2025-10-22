@@ -14,7 +14,7 @@ bool InitCapture(const char* name) {
     // Open the PCM device for CAPTURE (input)
     err = snd_pcm_open(&_soundDevice, name ? name : "hw:3,0", SND_PCM_STREAM_CAPTURE, 0);
     if (err < 0) {
-        std::cerr << "Cannot open audio device for capture (" << snd_strerror(err) << ")" << std::endl;
+        std::std::cerr << "Cannot open audio device for capture (" << snd_strerror(err) << ")" << std::std::endl;
         return false;
     }
 
@@ -36,16 +36,31 @@ bool InitCapture(const char* name) {
 }
 
 bool CaptureOnce() {
-    const int frames = 44100; // 1 second of stereo audio
-    int32_t* buffer = new int32_t[frames * 4]; // 4 channels
-    int err = snd_pcm_readi(_soundDevice, buffer, frames);
-    if (err < 0) {
-        std::cerr << "Read error: " << snd_strerror(err) << std::endl;
-        snd_pcm_prepare(_soundDevice);
-        return false;
+    const int framesPerChunk = 1024; // 1 second of stereo audio
+    const int channels = 4;
+    int32_t* buffer = new int32_t[framesPerChunk * channels]; // 4 channels
+    
+    while(keepRunning){
+        int err = snd_pcm_readi(_soundDevice, buffer, framesPerChunk);
+        if (err == -EPIPE) {
+            // Overrun
+            std::cerr << "Overrun occurred!" << std::endl;
+            snd_pcm_prepare(_soundDevice);
+        } else if (err < 0) {
+            std::cerr << "Read error: " << snd_strerror(err) << std::endl;
+            snd_pcm_prepare(_soundDevice);
+        } else if (err != framesPerChunk) {
+            std::cerr << "Short read, got " << err << " frames" << std::endl;
+        }
+
+        std::cout << "Samples: ";
+        for (int ch=0; ch<channels;  ++ch){
+            std::cout<<buffer[ch] << " ";
+        }
+        std::cout << "\r";
+        std::cout.flush();
     }
-    return true;
-    std::cout<<buffer<<std::endl;
+    delete[] buffer;
 }
 
 void UnInit() {
