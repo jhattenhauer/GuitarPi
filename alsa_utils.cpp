@@ -40,10 +40,10 @@ bool InitCapture(const char* name) { //setup alsa device
 std::vector<int32_t> CaptureSample() { //capture a sample of audio
     const int framesPerChunk = 1024; // sample size of chunk
     const int channels = 4;
-    std::vector<int32_t> buffer = new int32_t[framesPerChunk * channels]; // 4 channels
+    std::vector<int32_t> buffer(framesPerChunk * channels);  // allocate vector
     
     while(keepRunning){
-        int err = snd_pcm_readi(_soundDevice, buffer, framesPerChunk);
+        int err = snd_pcm_readi(_soundDevice, buffer.data(), framesPerChunk);
         if (err == -EPIPE) {
             // Overrun
             std::cerr << "Overrun occurred!" << std::endl;
@@ -88,7 +88,7 @@ int findDominantFrequency(const std::vector<double>& samples, double sampleRate)
             maxIndex = i;
         }
     }
-    return maxIndex
+    return maxIndex;
 }
 
 void UnInit() {
