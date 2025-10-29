@@ -41,10 +41,10 @@ int main(int argc, char* argv[]) {
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
 
-        // Draw a rectangle
-        SDL_Rect rect = { 100, 100, 200, 200 };
+        // Draw a simple square
+        SDL_Rect square = { 100, 100, 100, 100 };
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-        SDL_RenderFillRect(renderer, &rect);
+        SDL_RenderFillRect(renderer, &square);
 
         // Present the screen
         SDL_RenderPresent(renderer);

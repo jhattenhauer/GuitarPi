@@ -11,3 +11,6 @@ https://addons.mozilla.org/en-US/firefox/addon/easy-songsterr-downloader/
 
 Parsing Guitar Pro files:
 https://github.com/knasan/parsegp
+
+Video game tutorial:
+https://codezup.com/building-a-cpp-game-engine-from-scratch/
