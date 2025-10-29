@@ -1,20 +1,22 @@
 #include <alsa/asoundlib.h>
+#include <fftw3.h>
 #include <iostream>
 #include <csignal>
+#include <vector>
+#include <complex>
+#include <cmath>
 
 snd_pcm_t* _soundDevice = nullptr;
-bool  keepRunning = true;
+bool keepRunning = true;
 
-void signalHandler(int signum){keepRunning = false;}
+void signalHandler(int signum){keepRunning = false;} //clean exit signal handler
 
-bool InitCapture(const char* name) {
+bool InitCapture(const char* name) { //setup alsa device
     int err;
     snd_pcm_hw_params_t* hw_params;
-
-    // Open the PCM device for CAPTURE (input)
-    err = snd_pcm_open(&_soundDevice, name ? name : "hw:3,0", SND_PCM_STREAM_CAPTURE, 0);
+    err = snd_pcm_open(&_soundDevice, name ? name : "hw:3,0", SND_PCM_STREAM_CAPTURE, 0); //magic number 'hw:3,0' is just alsa endpoints
     if (err < 0) {
-        std::std::cerr << "Cannot open audio device for capture (" << snd_strerror(err) << ")" << std::std::endl;
+        std::cerr << "Cannot open audio device for capture (" << snd_strerror(err) << ")" << std::endl;
         return false;
     }
 
@@ -25,8 +27,8 @@ bool InitCapture(const char* name) {
     snd_pcm_hw_params_set_format(_soundDevice, hw_params, SND_PCM_FORMAT_S32_LE);
     snd_pcm_hw_params_set_channels(_soundDevice, hw_params, 4);
 
-    unsigned int rate = 44100;
-    snd_pcm_hw_params_set_rate_near(_soundDevice, hw_params, &rate, 0);
+    unsigned int sample_rate = 44100;
+    snd_pcm_hw_params_set_rate_near(_soundDevice, hw_params, &sample_rate, 0);
 
     snd_pcm_hw_params(_soundDevice, hw_params);
     snd_pcm_hw_params_free(hw_params);
@@ -35,10 +37,10 @@ bool InitCapture(const char* name) {
     return true;
 }
 
-bool CaptureOnce() {
-    const int framesPerChunk = 1024; // 1 second of stereo audio
+std::vector<int32_t> CaptureSample() { //capture a sample of audio
+    const int framesPerChunk = 1024; // sample size of chunk
     const int channels = 4;
-    int32_t* buffer = new int32_t[framesPerChunk * channels]; // 4 channels
+    std::vector<int32_t> buffer = new int32_t[framesPerChunk * channels]; // 4 channels
     
     while(keepRunning){
         int err = snd_pcm_readi(_soundDevice, buffer, framesPerChunk);
@@ -52,15 +54,40 @@ bool CaptureOnce() {
         } else if (err != framesPerChunk) {
             std::cerr << "Short read, got " << err << " frames" << std::endl;
         }
-
-        std::cout << "Samples: ";
-        for (int ch=0; ch<channels;  ++ch){
-            std::cout<<buffer[ch] << " ";
-        }
-        std::cout << "\r";
-        std::cout.flush();
     }
-    delete[] buffer;
+    return buffer;
+}
+
+void doFFT(const std::vector<double>& in, std::vector<std::complex<double>>& out) {//fast fourier transform
+    int N = in.size();
+    fftw_complex* out_c = reinterpret_cast<fftw_complex*>(out.data());
+    fftw_plan p = fftw_plan_dft_r2c_1d(N, const_cast<double*>(in.data()), out_c, FFTW_ESTIMATE);
+    fftw_execute(p);
+    fftw_destroy_plan(p);
+}
+
+std::vector<std::complex<double>> fft_wrapper(const std::vector<int32_t>& intInput) {//wrap fft to output frequency domain
+    std::vector<double> input(intInput.begin(), intInput.end());
+    std::vector<std::complex<double>> output(input.size() / 2 + 1);
+    doFFT(input, output);
+    return output; // full frequency-domain vector
+}
+
+double findDominantFrequency(const std::vector<double>& samples, double sampleRate) {//find dominant frequency
+    int N = samples.size();
+    std::vector<std::complex<double>> spectrum(N / 2 + 1);
+    doFFT(samples, spectrum);
+
+    // Find index of the largest magnitude
+    int maxIndex = 0;
+    double maxMag = 0.0;
+    for (int i = 0; i < spectrum.size(); ++i) {
+        double mag = std::norm(spectrum[i]);  // magnitude squared
+        if (mag > maxMag) {
+            maxMag = mag;
+            maxIndex = i;
+        }
+    }
 }
 
 void UnInit() {
@@ -75,7 +102,7 @@ int main() {
     signal(SIGINT, signalHandler);
     if (InitCapture(NULL)) {
         std::cout << "Starting Recording..." << std::endl;
-        CaptureOnce();
+        CaptureSample();
         UnInit();
     }
     return 0;
