@@ -73,7 +73,7 @@ std::vector<std::complex<double>> fft_wrapper(const std::vector<int32_t>& intInp
     return output; // full frequency-domain vector
 }
 
-double findDominantFrequency(const std::vector<double>& samples, double sampleRate) {//find dominant frequency
+int findDominantFrequency(const std::vector<double>& samples, double sampleRate) {//find dominant frequency
     int N = samples.size();
     std::vector<std::complex<double>> spectrum(N / 2 + 1);
     doFFT(samples, spectrum);
@@ -88,6 +88,7 @@ double findDominantFrequency(const std::vector<double>& samples, double sampleRa
             maxIndex = i;
         }
     }
+    return maxIndex
 }
 
 void UnInit() {
