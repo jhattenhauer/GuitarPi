@@ -1,0 +1,4 @@
+/home/eceengstu/projects/GuitarPi/build/CMakeFiles/audio_fft.dir
+/home/eceengstu/projects/GuitarPi/build/CMakeFiles/game.dir
+/home/eceengstu/projects/GuitarPi/build/CMakeFiles/edit_cache.dir
+/home/eceengstu/projects/GuitarPi/build/CMakeFiles/rebuild_cache.dir

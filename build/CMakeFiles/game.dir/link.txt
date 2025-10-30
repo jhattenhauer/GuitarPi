@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/game.dir/game_loop.cpp.o -o game  -lSDL2 -lpthread 

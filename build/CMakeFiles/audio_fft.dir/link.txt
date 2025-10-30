@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/audio_fft.dir/alsa_utils.cpp.o -o audio_fft  -lasound -lfftw3 -lSDL2 -lm -lpthread 
