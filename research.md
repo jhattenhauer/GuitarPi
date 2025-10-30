@@ -6,6 +6,8 @@ https://soundprogramming.net/programming/alsa-tutorial-1-initialization/
 Guitar effects:
 https://github.com/Quinny/GuitarEffects/blob/master/README.md
 
+https://daisy.audio/
+
 For downloading songsterr tabs to then be parsed:
 https://addons.mozilla.org/en-US/firefox/addon/easy-songsterr-downloader/
 

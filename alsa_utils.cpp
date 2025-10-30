@@ -104,7 +104,7 @@ int main() {
         std::cout << sample[i] << std::endl;
         }
     UnInit();
-        return 0;
+    return 0;
     }
     return 0;
 }
