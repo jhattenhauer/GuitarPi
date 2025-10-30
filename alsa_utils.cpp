@@ -1,20 +1,18 @@
 #include <alsa/asoundlib.h>
 #include <fftw3.h>
 #include <iostream>
-#include <csignal>
 #include <vector>
 #include <complex>
 #include <cmath>
+#include <chrono>
+#include <thread>
 
 snd_pcm_t* _soundDevice = nullptr;
-bool keepRunning = true;
-
-void signalHandler(int signum){keepRunning = false;} //clean exit signal handler
 
 bool InitCapture(const char* name) { //setup alsa device
     int err;
     snd_pcm_hw_params_t* hw_params;
-    err = snd_pcm_open(&_soundDevice, name ? name : "hw:3,0", SND_PCM_STREAM_CAPTURE, 0); //magic number 'hw:3,0' is just alsa endpoints
+    err = snd_pcm_open(&_soundDevice, name ? name : "hw:3,0", SND_PCM_STREAM_CAPTURE, 0); //magic number 'hw:3,0' is just alsa endpoint
     if (err < 0) {
         std::cerr << "Cannot open audio device for capture (" << snd_strerror(err) << ")" << std::endl;
         return false;
@@ -42,18 +40,16 @@ std::vector<int32_t> CaptureSample() { //capture a sample of audio
     const int channels = 4;
     std::vector<int32_t> buffer(framesPerChunk * channels);  // allocate vector
     
-    while(keepRunning){
-        int err = snd_pcm_readi(_soundDevice, buffer.data(), framesPerChunk);
-        if (err == -EPIPE) {
-            // Overrun
-            std::cerr << "Overrun occurred!" << std::endl;
-            snd_pcm_prepare(_soundDevice);
-        } else if (err < 0) {
-            std::cerr << "Read error: " << snd_strerror(err) << std::endl;
-            snd_pcm_prepare(_soundDevice);
-        } else if (err != framesPerChunk) {
-            std::cerr << "Short read, got " << err << " frames" << std::endl;
-        }
+    int err = snd_pcm_readi(_soundDevice, buffer.data(), framesPerChunk);
+    if (err == -EPIPE) {
+        // Overrun
+        std::cerr << "Overrun occurred!" << std::endl;
+        snd_pcm_prepare(_soundDevice);
+    } else if (err < 0) {
+        std::cerr << "Read error: " << snd_strerror(err) << std::endl;
+        snd_pcm_prepare(_soundDevice);
+    } else if (err != framesPerChunk) {
+        std::cerr << "Short read, got " << err << " frames" << std::endl;
     }
     return buffer;
 }
@@ -100,11 +96,15 @@ void UnInit() {
 }
 
 int main() {
-    signal(SIGINT, signalHandler);
-    if (InitCapture(NULL)) {
-        std::cout << "Starting Recording..." << std::endl;
-        CaptureSample();
-        UnInit();
+    if (InitCapture(NULL)){
+    std::cout << "Starting Recording..." << std::endl;
+    std::vector<int32_t> sample = CaptureSample();
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    for (int i = 0; i < sample.size(); i++){
+        std::cout << sample[i] << std::endl;
+        }
+    UnInit();
+        return 0;
     }
     return 0;
 }
