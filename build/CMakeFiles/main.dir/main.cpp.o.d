@@ -209,5 +209,4 @@ CMakeFiles/main.dir/main.cpp.o: \
  /usr/include/c++/11/bits/invoke.h /usr/include/c++/11/bits/refwrap.h \
  /usr/include/c++/11/bits/unique_ptr.h \
  /usr/include/c++/11/bits/this_thread_sleep.h \
- /home/eceengstu/projects/GuitarPi/alsa_utils.h \
- /home/eceengstu/projects/GuitarPi/pedals/all_pedals.h
+ /home/eceengstu/projects/GuitarPi/libraries/alsa_utils.h

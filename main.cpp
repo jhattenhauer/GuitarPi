@@ -7,8 +7,7 @@
 #include <chrono>
 #include <thread>
 
-#include "alsa_utils.h"
-#include "pedals/all_pedals.h"
+#include "libraries/alsa_utils.h"
 
 int main() {
     if (InitCapture(NULL)){

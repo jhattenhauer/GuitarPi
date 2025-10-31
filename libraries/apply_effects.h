@@ -8,8 +8,9 @@
 #include <thread>
 
 #include "pedals/all_pedals.h"
+#include <libraries/json.hpp>
 
+std::vector<int32_t> apply_effects(){
 
-std::vector<int32_t> apply_functions(){
 
 }
