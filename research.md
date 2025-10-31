@@ -8,3 +8,4 @@ https://github.com/Quinny/GuitarEffects/blob/master/README.md
 
 https://daisy.audio/
 
+https://github.com/thestk/rtaudio
