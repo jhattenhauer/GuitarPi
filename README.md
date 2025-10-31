@@ -1,2 +1,2 @@
-# Guitar app to play songs #
-Guitar hero like clone, that will take in tabliture files
+# Guitar app for digital effects#
+Intended to be used with either a raspberry pi or computer for guitar digital effects
