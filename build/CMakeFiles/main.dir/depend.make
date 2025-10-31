@@ -1,2 +1,2 @@
-# Empty dependencies file for audio_fft.
+# Empty dependencies file for main.
 # This may be replaced when dependencies are built.

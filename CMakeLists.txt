@@ -8,16 +8,16 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(ALSA REQUIRED alsa)
 pkg_check_modules(FFTW3 REQUIRED fftw3)
 
-add_executable(audio_fft alsa_utils.cpp)
+add_executable(main main.cpp)
 
 # Include directories
-target_include_directories(audio_fft PRIVATE
+target_include_directories(main PRIVATE
     ${ALSA_INCLUDE_DIRS}
     ${FFTW3_INCLUDE_DIRS}
 )
 
 # Link libraries
-target_link_libraries(audio_fft PRIVATE
+target_link_libraries(main PRIVATE
     ${ALSA_LIBRARIES}
     ${FFTW3_LIBRARIES}
     m pthread

@@ -117,41 +117,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named audio_fft
+# Target rules for targets named main
 
 # Build rule for target.
-audio_fft: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 audio_fft
-.PHONY : audio_fft
+main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
+.PHONY : main
 
 # fast build rule for target.
-audio_fft/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/audio_fft.dir/build.make CMakeFiles/audio_fft.dir/build
-.PHONY : audio_fft/fast
+main/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
 
-alsa_utils.o: alsa_utils.cpp.o
-.PHONY : alsa_utils.o
+main.o: main.cpp.o
+.PHONY : main.o
 
 # target to build an object file
-alsa_utils.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/audio_fft.dir/build.make CMakeFiles/audio_fft.dir/alsa_utils.cpp.o
-.PHONY : alsa_utils.cpp.o
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-alsa_utils.i: alsa_utils.cpp.i
-.PHONY : alsa_utils.i
+main.i: main.cpp.i
+.PHONY : main.i
 
 # target to preprocess a source file
-alsa_utils.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/audio_fft.dir/build.make CMakeFiles/audio_fft.dir/alsa_utils.cpp.i
-.PHONY : alsa_utils.cpp.i
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-alsa_utils.s: alsa_utils.cpp.s
-.PHONY : alsa_utils.s
+main.s: main.cpp.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-alsa_utils.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/audio_fft.dir/build.make CMakeFiles/audio_fft.dir/alsa_utils.cpp.s
-.PHONY : alsa_utils.cpp.s
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -161,10 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... audio_fft"
-	@echo "... alsa_utils.o"
-	@echo "... alsa_utils.i"
-	@echo "... alsa_utils.s"
+	@echo "... main"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

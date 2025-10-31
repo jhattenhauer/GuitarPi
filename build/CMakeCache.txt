@@ -20,14 +20,15 @@ CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 
-//No help, variable specified on the command line.
-CMAKE_BUILD_TYPE:STRING=Debug
+//Choose the type of build, options are: None Debug Release RelWithDebInfo
+// MinSizeRel ...
+CMAKE_BUILD_TYPE:STRING=
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
-//No help, variable specified on the command line.
-CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/g++
+//CXX compiler
+CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -52,9 +53,6 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
-//No help, variable specified on the command line.
-CMAKE_C_COMPILER:FILEPATH=/usr/bin/gcc
-
 //Path to a program.
 CMAKE_DLLTOOL:FILEPATH=CMAKE_DLLTOOL-NOTFOUND
 
@@ -73,8 +71,8 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 //Flags used by the linker during RELWITHDEBINFO builds.
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
-//No help, variable specified on the command line.
-CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
+//Enable/Disable output of compile commands during generation.
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
 
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=/usr/local
@@ -206,9 +204,6 @@ pkgcfg_lib_ALSA_asound:FILEPATH=/usr/lib/x86_64-linux-gnu/libasound.so
 //Path to a library.
 pkgcfg_lib_FFTW3_fftw3:FILEPATH=/usr/lib/x86_64-linux-gnu/libfftw3.so
 
-//Path to a library.
-pkgcfg_lib_SDL2_SDL2:FILEPATH=/usr/lib/x86_64-linux-gnu/libSDL2.so
-
 
 ########################
 # INTERNAL cache entries
@@ -299,6 +294,8 @@ CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS
+CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
@@ -415,52 +412,13 @@ FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29.2()]
 PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
-SDL2_CFLAGS:INTERNAL=-D_REENTRANT;-I/usr/include/SDL2
-SDL2_CFLAGS_I:INTERNAL=
-SDL2_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
-SDL2_FOUND:INTERNAL=1
-SDL2_INCLUDEDIR:INTERNAL=/usr/include
-SDL2_INCLUDE_DIRS:INTERNAL=/usr/include/SDL2
-SDL2_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-lSDL2
-SDL2_LDFLAGS_OTHER:INTERNAL=
-SDL2_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
-SDL2_LIBRARIES:INTERNAL=SDL2
-SDL2_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
-SDL2_LIBS:INTERNAL=
-SDL2_LIBS_L:INTERNAL=
-SDL2_LIBS_OTHER:INTERNAL=
-SDL2_LIBS_PATHS:INTERNAL=
-SDL2_MODULE_NAME:INTERNAL=sdl2
-SDL2_PREFIX:INTERNAL=/usr
-SDL2_STATIC_CFLAGS:INTERNAL=-D_REENTRANT;-I/usr/include/SDL2
-SDL2_STATIC_CFLAGS_I:INTERNAL=
-SDL2_STATIC_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
-SDL2_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/SDL2
-SDL2_STATIC_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-lSDL2;-lm;-lasound;-lm;-ldl;-lpthread;-lpulse-simple;-pthread;-lpulse;-pthread;-lX11;-lXext;-lXcursor;-lXinerama;-lXi;-lXfixes;-lXrandr;-lXss;-lXxf86vm;-ldrm;-lgbm;-lwayland-egl;-lwayland-client;-lwayland-cursor;-lxkbcommon;-ldecor-0;-lpthread;-lrt
-SDL2_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
-SDL2_STATIC_LIBDIR:INTERNAL=
-SDL2_STATIC_LIBRARIES:INTERNAL=SDL2;m;asound;m;dl;pthread;pulse-simple;pulse;X11;Xext;Xcursor;Xinerama;Xi;Xfixes;Xrandr;Xss;Xxf86vm;drm;gbm;wayland-egl;wayland-client;wayland-cursor;xkbcommon;decor-0;pthread;rt
-SDL2_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
-SDL2_STATIC_LIBS:INTERNAL=
-SDL2_STATIC_LIBS_L:INTERNAL=
-SDL2_STATIC_LIBS_OTHER:INTERNAL=
-SDL2_STATIC_LIBS_PATHS:INTERNAL=
-SDL2_VERSION:INTERNAL=2.0.20
-SDL2_sdl2_INCLUDEDIR:INTERNAL=
-SDL2_sdl2_LIBDIR:INTERNAL=
-SDL2_sdl2_PREFIX:INTERNAL=
-SDL2_sdl2_VERSION:INTERNAL=
 __pkg_config_arguments_ALSA:INTERNAL=REQUIRED;alsa
 __pkg_config_arguments_FFTW3:INTERNAL=REQUIRED;fftw3
-__pkg_config_arguments_SDL2:INTERNAL=REQUIRED;sdl2
 __pkg_config_checked_ALSA:INTERNAL=1
 __pkg_config_checked_FFTW3:INTERNAL=1
-__pkg_config_checked_SDL2:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_ALSA_asound
 pkgcfg_lib_ALSA_asound-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_FFTW3_fftw3
 pkgcfg_lib_FFTW3_fftw3-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_SDL2_SDL2
-pkgcfg_lib_SDL2_SDL2-ADVANCED:INTERNAL=1
 prefix_result:INTERNAL=/usr/lib/x86_64-linux-gnu
 

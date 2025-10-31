@@ -1,0 +1,25 @@
+//just an example json right now
+
+{
+  "pedal_settings": [
+    {
+      "id": "distortion",
+      "gain": 0.7,
+      "drive": 0.9,
+      "tone": 0.6
+    },
+    {
+      "id": "delay",
+      "time": 450,
+      "feedback": 0.7,
+      "mix": 0.5
+    },
+    {
+      "id": "wah",
+      "frequency": 1200,
+      "depth": 0.8,
+      "mode": "auto"
+    }
+  ]
+}
+

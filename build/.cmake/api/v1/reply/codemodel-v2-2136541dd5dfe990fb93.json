@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.10"
@@ -19,7 +19,7 @@
 					]
 				}
 			],
-			"name" : "Debug",
+			"name" : "",
 			"projects" : 
 			[
 				{
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "audio_fft::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-audio_fft-Debug-421e08032f6784f1f916.json",
-					"name" : "audio_fft",
+					"id" : "main::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main-6c7734726cb632e398d5.json",
+					"name" : "main",
 					"projectIndex" : 0
 				}
 			]
