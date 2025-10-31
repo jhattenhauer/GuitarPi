@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/eceengstu/projects/GuitarPi/build",
+  "command": "/usr/bin/g++   -g -std=gnu++17 -o CMakeFiles/audio_fft.dir/alsa_utils.cpp.o -c /home/eceengstu/projects/GuitarPi/alsa_utils.cpp",
+  "file": "/home/eceengstu/projects/GuitarPi/alsa_utils.cpp"
+}
+]

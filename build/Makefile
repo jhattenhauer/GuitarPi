@@ -129,19 +129,6 @@ audio_fft/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/audio_fft.dir/build.make CMakeFiles/audio_fft.dir/build
 .PHONY : audio_fft/fast
 
-#=============================================================================
-# Target rules for targets named game
-
-# Build rule for target.
-game: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 game
-.PHONY : game
-
-# fast build rule for target.
-game/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/build
-.PHONY : game/fast
-
 alsa_utils.o: alsa_utils.cpp.o
 .PHONY : alsa_utils.o
 
@@ -166,30 +153,6 @@ alsa_utils.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/audio_fft.dir/build.make CMakeFiles/audio_fft.dir/alsa_utils.cpp.s
 .PHONY : alsa_utils.cpp.s
 
-game_loop.o: game_loop.cpp.o
-.PHONY : game_loop.o
-
-# target to build an object file
-game_loop.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/game_loop.cpp.o
-.PHONY : game_loop.cpp.o
-
-game_loop.i: game_loop.cpp.i
-.PHONY : game_loop.i
-
-# target to preprocess a source file
-game_loop.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/game_loop.cpp.i
-.PHONY : game_loop.cpp.i
-
-game_loop.s: game_loop.cpp.s
-.PHONY : game_loop.s
-
-# target to generate assembly for a file
-game_loop.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/game_loop.cpp.s
-.PHONY : game_loop.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -199,13 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... audio_fft"
-	@echo "... game"
 	@echo "... alsa_utils.o"
 	@echo "... alsa_utils.i"
 	@echo "... alsa_utils.s"
-	@echo "... game_loop.o"
-	@echo "... game_loop.i"
-	@echo "... game_loop.s"
 .PHONY : help
 
 

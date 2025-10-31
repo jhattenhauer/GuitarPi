@@ -73,15 +73,15 @@ CMakeFiles/audio_fft.dir/alsa_utils.cpp.o: CMakeFiles/audio_fft.dir/flags.make
 CMakeFiles/audio_fft.dir/alsa_utils.cpp.o: ../alsa_utils.cpp
 CMakeFiles/audio_fft.dir/alsa_utils.cpp.o: CMakeFiles/audio_fft.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eceengstu/projects/GuitarPi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/audio_fft.dir/alsa_utils.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/audio_fft.dir/alsa_utils.cpp.o -MF CMakeFiles/audio_fft.dir/alsa_utils.cpp.o.d -o CMakeFiles/audio_fft.dir/alsa_utils.cpp.o -c /home/eceengstu/projects/GuitarPi/alsa_utils.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/audio_fft.dir/alsa_utils.cpp.o -MF CMakeFiles/audio_fft.dir/alsa_utils.cpp.o.d -o CMakeFiles/audio_fft.dir/alsa_utils.cpp.o -c /home/eceengstu/projects/GuitarPi/alsa_utils.cpp
 
 CMakeFiles/audio_fft.dir/alsa_utils.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/audio_fft.dir/alsa_utils.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eceengstu/projects/GuitarPi/alsa_utils.cpp > CMakeFiles/audio_fft.dir/alsa_utils.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eceengstu/projects/GuitarPi/alsa_utils.cpp > CMakeFiles/audio_fft.dir/alsa_utils.cpp.i
 
 CMakeFiles/audio_fft.dir/alsa_utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/audio_fft.dir/alsa_utils.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eceengstu/projects/GuitarPi/alsa_utils.cpp -o CMakeFiles/audio_fft.dir/alsa_utils.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eceengstu/projects/GuitarPi/alsa_utils.cpp -o CMakeFiles/audio_fft.dir/alsa_utils.cpp.s
 
 # Object files for target audio_fft
 audio_fft_OBJECTS = \
