@@ -1,0 +1,3 @@
+/home/james/Documents/GuitarPi/build/CMakeFiles/main.dir
+/home/james/Documents/GuitarPi/build/CMakeFiles/edit_cache.dir
+/home/james/Documents/GuitarPi/build/CMakeFiles/rebuild_cache.dir

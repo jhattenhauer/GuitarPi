@@ -6,7 +6,7 @@
 #include "libraries/apply_effects.h"
 
 int main() {
-    /*if (InitCapture(NULL)){
+    if (InitCapture(NULL)){
     std::cout << "Starting Recording..." << std::endl;
     std::vector<int32_t> sample = CaptureSample();
     std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -15,8 +15,9 @@ int main() {
         }
     UnInit();
     return 0;
-    }*/
-    apply_effects();
+    }
+
+
 
     return 0;
 }
