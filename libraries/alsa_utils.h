@@ -35,12 +35,21 @@ bool InitCapture(const char* name) { //setup alsa device
     return true;
 }
 
-std::vector<float> ConvertBuffer(const std::vector<int32_t>& intBuffer) {
+std::vector<float> Int_to_Float(const std::vector<int32_t>& intBuffer) {
     std::vector<float> floatBuffer(intBuffer.size());
     const float scale = 1.0f / static_cast<float>(INT32_MAX);
     for (size_t i = 0; i < intBuffer.size(); ++i)
         floatBuffer[i] = static_cast<float>(intBuffer[i]) * scale;
     return floatBuffer;
+}
+
+std::vector<int32_t> Float_to_Int(const std::vector<float>& floatBuffer) {
+    std::vector<int32_t> intBuffer(floatBuffer.size());
+    for (size_t i = 0; i < floatBuffer.size(); ++i) {
+        float clamped = std::max(-1.0f, std::min(1.0f, floatBuffer[i])); // avoid overflow
+        intBuffer[i] = static_cast<int32_t>(clamped * INT32_MAX);
+    }
+    return intBuffer;
 }
 
 std::vector<int32_t> CaptureSample() {
