@@ -35,14 +35,21 @@ bool InitCapture(const char* name) { //setup alsa device
     return true;
 }
 
-std::vector<int32_t> CaptureSample() { //capture a sample of audio
-    const int framesPerChunk = 1024; // sample size of chunk
+std::vector<float> ConvertBuffer(const std::vector<int32_t>& intBuffer) {
+    std::vector<float> floatBuffer(intBuffer.size());
+    const float scale = 1.0f / static_cast<float>(INT32_MAX);
+    for (size_t i = 0; i < intBuffer.size(); ++i)
+        floatBuffer[i] = static_cast<float>(intBuffer[i]) * scale;
+    return floatBuffer;
+}
+
+std::vector<int32_t> CaptureSample() {
+    const int framesPerChunk = 1024;
     const int channels = 4;
-    std::vector<int32_t> buffer(framesPerChunk * channels);  // allocate vector
-    
-    int err = snd_pcm_readi(_soundDevice, buffer.data(), framesPerChunk);
+    std::vector<int32_t> intBuffer(framesPerChunk * channels);
+
+    int err = snd_pcm_readi(_soundDevice, intBuffer.data(), framesPerChunk);
     if (err == -EPIPE) {
-        // Overrun
         std::cerr << "Overrun occurred!" << std::endl;
         snd_pcm_prepare(_soundDevice);
     } else if (err < 0) {
@@ -51,40 +58,8 @@ std::vector<int32_t> CaptureSample() { //capture a sample of audio
     } else if (err != framesPerChunk) {
         std::cerr << "Short read, got " << err << " frames" << std::endl;
     }
-    return buffer;
-}
 
-void doFFT(const std::vector<double>& in, std::vector<std::complex<double>>& out) {//fast fourier transform
-    int N = in.size();
-    fftw_complex* out_c = reinterpret_cast<fftw_complex*>(out.data());
-    fftw_plan p = fftw_plan_dft_r2c_1d(N, const_cast<double*>(in.data()), out_c, FFTW_ESTIMATE);
-    fftw_execute(p);
-    fftw_destroy_plan(p);
-}
-
-std::vector<std::complex<double>> fft_wrapper(const std::vector<int32_t>& intInput) {//wrap fft to output frequency domain
-    std::vector<double> input(intInput.begin(), intInput.end());
-    std::vector<std::complex<double>> output(input.size() / 2 + 1);
-    doFFT(input, output);
-    return output; // full frequency-domain vector
-}
-
-int findDominantFrequency(const std::vector<double>& samples, double sampleRate) {//find dominant frequency
-    int N = samples.size();
-    std::vector<std::complex<double>> spectrum(N / 2 + 1);
-    doFFT(samples, spectrum);
-
-    // Find index of the largest magnitude
-    int maxIndex = 0;
-    double maxMag = 0.0;
-    for (int i = 0; i < spectrum.size(); ++i) {
-        double mag = std::norm(spectrum[i]);  // magnitude squared
-        if (mag > maxMag) {
-            maxMag = mag;
-            maxIndex = i;
-        }
-    }
-    return maxIndex;
+    return intBuffer;
 }
 
 void UnInit() {
