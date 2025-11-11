@@ -458,7 +458,6 @@ CMakeFiles/main.dir/main.cpp.o: /home/james/Documents/GuitarPi/main.cpp \
   /home/james/Documents/GuitarPi/libraries/pedals/detune.h \
   /home/james/Documents/GuitarPi/libraries/pedals/distortion_pedal.h \
   /home/james/Documents/GuitarPi/libraries/pedals/echo_pedal.h \
-  /home/james/Documents/GuitarPi/libraries/pedals/filter_pedal.h \
   /home/james/Documents/GuitarPi/libraries/pedals/fuzz_pedal.h \
   /home/james/Documents/GuitarPi/libraries/pedals/highpass_pedal.h \
   /home/james/Documents/GuitarPi/libraries/pedals/looper_pedal.h \
@@ -472,8 +471,6 @@ CMakeFiles/main.dir/main.cpp.o: /home/james/Documents/GuitarPi/main.cpp \
 /home/james/Documents/GuitarPi/libraries/pedals/highpass_pedal.h:
 
 /home/james/Documents/GuitarPi/libraries/pedals/fuzz_pedal.h:
-
-/home/james/Documents/GuitarPi/libraries/pedals/filter_pedal.h:
 
 /home/james/Documents/GuitarPi/libraries/pedals/detune.h:
 
