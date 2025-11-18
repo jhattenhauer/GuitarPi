@@ -13,13 +13,17 @@ int main(int argc, char* argv[]) {
     }
     if (InitCapture(NULL)){
         std::cout << "Starting Recording..." << std::endl;
-        while(true){
-            std::vector<int32_t> sample = CaptureSample();
-            std::vector<float> floatSample = Int_to_Float(sample);
-            apply_effects(floatSample);
-        }
+        if (InitPlayback(NULL)){
+            std::cout << "Starting Playback..." << std::endl;
+            while(true){
+                std::vector<int32_t> sample = CaptureSample();
+                std::vector<float> floatSample = Int_to_Float(sample);
+                apply_effects(floatSample);
+                
+            }
+        UnInitPlaybackDevice();        
+        }    
     UnInitCaptureDevice();
-    return 0;
     }
     return 0;
 }
