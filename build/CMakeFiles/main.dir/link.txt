@@ -1,1 +1,1 @@
-/usr/lib/ccache/c++ CMakeFiles/main.dir/main.cpp.o -o main  -lasound -lfftw3 -lm -lpthread 
+/usr/lib/ccache/c++ CMakeFiles/main.dir/main.cpp.o -o main  -lasound -lm -lpthread 
