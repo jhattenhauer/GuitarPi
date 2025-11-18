@@ -9,7 +9,7 @@
 
 snd_pcm_t* _captureDevice = nullptr;
 
-bool InitCapture(const char* name) { //setup alsa capture device
+bool InitCapture(const char* name){ //setup alsa capture device
     int err;
     snd_pcm_hw_params_t* hw_params;
     err = snd_pcm_open(&_captureDevice, name ? name : "hw:3,0", SND_PCM_STREAM_CAPTURE, 0); //magic number 'hw:3,0' is just alsa endpoint
@@ -64,7 +64,7 @@ bool InitPlayback(const char* name){ //setup alsa playback device //pretty much 
 }
 
 
-std::vector<float> Int_to_Float(const std::vector<int32_t>& intBuffer) {
+std::vector<float> Int_to_Float(const std::vector<int32_t>& intBuffer){
     std::vector<float> floatBuffer(intBuffer.size());
     const float scale = 1.0f / static_cast<float>(INT32_MAX);
     for (size_t i = 0; i < intBuffer.size(); ++i)
@@ -72,7 +72,7 @@ std::vector<float> Int_to_Float(const std::vector<int32_t>& intBuffer) {
     return floatBuffer;
 }
 
-std::vector<int32_t> Float_to_Int(const std::vector<float>& floatBuffer) {
+std::vector<int32_t> Float_to_Int(const std::vector<float>& floatBuffer){
     std::vector<int32_t> intBuffer(floatBuffer.size());
     for (size_t i = 0; i < floatBuffer.size(); ++i) {
         float clamped = std::max(-1.0f, std::min(1.0f, floatBuffer[i])); // avoid overflow
@@ -81,7 +81,7 @@ std::vector<int32_t> Float_to_Int(const std::vector<float>& floatBuffer) {
     return intBuffer;
 }
 
-std::vector<int32_t> CaptureSample() {
+std::vector<int32_t> CaptureSample(){
     const int framesPerChunk = 1024;
     const int channels = 4;
     std::vector<int32_t> intBuffer(framesPerChunk * channels);
@@ -98,6 +98,22 @@ std::vector<int32_t> CaptureSample() {
     }
 
     return intBuffer;
+}
+
+void PlaybackSamples(snd_pcm_t* playbackDevice, const std::vector<int32_t>& samples, int channels = 4){
+    int framesPerChunk = samples.size() / channels;
+    const int32_t* buffer = samples.data();
+
+    snd_pcm_sframes_t frames = snd_pcm_writei(playbackDevice, buffer, framesPerChunk);
+    if (frames < 0) {
+        frames = snd_pcm_recover(playbackDevice, frames, 0);
+        if (frames < 0) {
+            std::cerr << "Playback error: " << snd_strerror(frames) << std::endl;
+            return;
+        }
+    } else if (frames != framesPerChunk){
+        std::cerr << "Short write, wrote " << frames << " frames instead of " << framesPerChunk << std::endl;
+    }
 }
 
 void UnInitCaptureDevice() {
