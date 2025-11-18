@@ -18,7 +18,7 @@
 #include "pedals/reverse_delay_pedal.h"
 
 void apply_effects(std::vector<float>& sample){
-    for (float i: sample){
-        distortion_pedal_func(i);
+    for (float peiceOfSample: sample){
+        distortion_pedal_func(peiceOfSample);
     }
 }

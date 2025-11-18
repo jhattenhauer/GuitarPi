@@ -7,33 +7,62 @@
 #include <chrono>
 #include <thread>
 
-snd_pcm_t* _soundDevice = nullptr;
+snd_pcm_t* _captureDevice = nullptr;
 
-bool InitCapture(const char* name) { //setup alsa device
+bool InitCapture(const char* name) { //setup alsa capture device
     int err;
     snd_pcm_hw_params_t* hw_params;
-    err = snd_pcm_open(&_soundDevice, name ? name : "hw:3,0", SND_PCM_STREAM_CAPTURE, 0); //magic number 'hw:3,0' is just alsa endpoint
+    err = snd_pcm_open(&_captureDevice, name ? name : "hw:3,0", SND_PCM_STREAM_CAPTURE, 0); //magic number 'hw:3,0' is just alsa endpoint
     if (err < 0) {
         std::cerr << "Cannot open audio device for capture (" << snd_strerror(err) << ")" << std::endl;
         return false;
     }
 
     snd_pcm_hw_params_malloc(&hw_params);
-    snd_pcm_hw_params_any(_soundDevice, hw_params);
+    snd_pcm_hw_params_any(_captureDevice, hw_params);
 
-    snd_pcm_hw_params_set_access(_soundDevice, hw_params, SND_PCM_ACCESS_RW_INTERLEAVED);
-    snd_pcm_hw_params_set_format(_soundDevice, hw_params, SND_PCM_FORMAT_S32_LE);
-    snd_pcm_hw_params_set_channels(_soundDevice, hw_params, 4);
+    snd_pcm_hw_params_set_access(_captureDevice, hw_params, SND_PCM_ACCESS_RW_INTERLEAVED);
+    snd_pcm_hw_params_set_format(_captureDevice, hw_params, SND_PCM_FORMAT_S32_LE);
+    snd_pcm_hw_params_set_channels(_captureDevice, hw_params, 4);
 
     unsigned int sample_rate = 44100;
-    snd_pcm_hw_params_set_rate_near(_soundDevice, hw_params, &sample_rate, 0);
+    snd_pcm_hw_params_set_rate_near(_captureDevice, hw_params, &sample_rate, 0);
 
-    snd_pcm_hw_params(_soundDevice, hw_params);
+    snd_pcm_hw_params(_captureDevice, hw_params);
     snd_pcm_hw_params_free(hw_params);
 
-    snd_pcm_prepare(_soundDevice);
+    snd_pcm_prepare(_captureDevice);
     return true;
 }
+
+snd_pcm_t* _playbackDevice = nullptr;
+
+bool InitPlayback(const char* name){ //setup alsa playback device //pretty much same function but may need to mod later
+    int err;
+    snd_pcm_hw_params_t* hw_params;
+    err = snd_pcm_open(&_playbackDevice, name ? name : "hw:3,0", SND_PCM_STREAM_CAPTURE, 0);
+    if (err < 0) {
+        std::cerr << "Cannot open audio device for playback )" << snd_strerror(err) << ")" << std::endl;
+        return false;
+    }
+
+    snd_pcm_hw_params_malloc(&hw_params);
+    snd_pcm_hw_params_any(_playbackDevice, hw_params);
+
+    snd_pcm_hw_params_set_access(_playbackDevice, hw_params, SND_PCM_ACCESS_RW_INTERLEAVED);
+    snd_pcm_hw_params_set_format(_playbackDevice, hw_params, SND_PCM_FORMAT_S32_LE);
+    snd_pcm_hw_params_set_channels(_playbackDevice, hw_params, 4);
+    
+    unsigned int sample_rate = 44100;
+    snd_pcm_hw_params_set_rate_near(_playbackDevice, hw_params, &sample_rate, 0);
+
+    snd_pcm_hw_params(_playbackDevice, hw_params);
+    snd_pcm_hw_params_free(hw_params);
+
+    snd_pcm_prepare(_playbackDevice);
+    return true;
+}
+
 
 std::vector<float> Int_to_Float(const std::vector<int32_t>& intBuffer) {
     std::vector<float> floatBuffer(intBuffer.size());
@@ -57,13 +86,13 @@ std::vector<int32_t> CaptureSample() {
     const int channels = 4;
     std::vector<int32_t> intBuffer(framesPerChunk * channels);
 
-    int err = snd_pcm_readi(_soundDevice, intBuffer.data(), framesPerChunk);
+    int err = snd_pcm_readi(_captureDevice, intBuffer.data(), framesPerChunk);
     if (err == -EPIPE) {
         std::cerr << "Overrun occurred!" << std::endl;
-        snd_pcm_prepare(_soundDevice);
+        snd_pcm_prepare(_captureDevice);
     } else if (err < 0) {
         std::cerr << "Read error: " << snd_strerror(err) << std::endl;
-        snd_pcm_prepare(_soundDevice);
+        snd_pcm_prepare(_captureDevice);
     } else if (err != framesPerChunk) {
         std::cerr << "Short read, got " << err << " frames" << std::endl;
     }
@@ -71,10 +100,19 @@ std::vector<int32_t> CaptureSample() {
     return intBuffer;
 }
 
-void UnInit() {
-    if (_soundDevice) {
-        snd_pcm_close(_soundDevice);
-        _soundDevice = nullptr;
+void UnInitCaptureDevice() {
+    if (_captureDevice) {
+        snd_pcm_close(_captureDevice);
+        _captureDevice = nullptr;
         std::cout << "Capture device closed." << std::endl;
+    }
+}
+
+void UnInitPlaybackDevice() {
+    if (_playbackDevice) {
+        snd_pcm_drain(_playbackDevice);
+        snd_pcm_close(_playbackDevice);
+        _playbackDevice = nullptr;
+        std::cout << "Playback device closed." << std::endl;
     }
 }

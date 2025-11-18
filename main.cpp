@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
             std::vector<float> floatSample = Int_to_Float(sample);
             apply_effects(floatSample);
         }
-    UnInit();
+    UnInitCaptureDevice();
     return 0;
     }
     return 0;
