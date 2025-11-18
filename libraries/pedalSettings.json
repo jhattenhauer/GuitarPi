@@ -1,0 +1,72 @@
+{
+  "pedal_settings": [
+    {
+      "id": "compressor",
+      "enabled": 1,
+      "threshold": 0.7,
+      "ratio": 0.9,
+      "makeup_gain": 0.6
+    },
+    {
+      "id": "delay",
+      "enabled": 1,
+      "sampleRate": 44100.0,
+      "delayTimeSec": 0.7,
+      "feedback": 0.5,
+      "mix": 0.5
+    },
+    {
+      "id": "detune",
+      "enabled": 1,
+      "detuneAmount": 1200,
+      "phase": 0.8,
+      "sampleRate": 0,
+      "baseFreq": 0
+    },
+    {
+      "id": "distortion",
+      "enabled": 1,
+      "gain": 1
+    },
+    {
+      "id": "echo",
+      "enabled": 1,
+      "sampleRate": 44100.0,
+      "delayTimeSec": 0.7,
+      "feedback": 0.5,
+      "mix": 0.5
+    },
+    {
+      "id": "fuzz",
+      "enabled": 1,
+      "gain": 1200
+    },
+    {
+      "id": "highpass",
+      "enabled": 1,
+      "cutoff": 1200,
+      "sampleRate": 0.8
+    },
+    {
+      "id": "lowpass",
+      "enabled": 1,
+      "cutoff": 1200,
+      "sampleRate": 0.8
+    },
+    {
+      "id": "reverb",
+      "enabled": 1,
+      "sampleRate": 44100.0,
+      "feedback": 0.5,
+      "mix": 0.5
+    },
+    {
+      "id": "reverse",
+      "enabled": 1,
+      "sampleRate": 44100.0,
+      "delayTimeSec": 0.7,
+      "mix": 0.5
+    }
+  ]
+}
+
