@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
         return 0;
     }
 
-    if (argc <= 1){ //need to pass both input and output
+    if (argc <= 2){ //need to pass both input and output
     try {capture_endpoint = argv[1];} catch (int e) {std::cerr << "Pass capture point as 'hw:3,0'" << std::endl;}
     try {playback_endpoint = argv[2];} catch (int e) {std::cerr << "Pass playback point as 'hw:1,0'" << std::endl;}
     }
