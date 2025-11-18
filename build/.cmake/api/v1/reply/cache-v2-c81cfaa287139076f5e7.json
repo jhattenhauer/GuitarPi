@@ -371,7 +371,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "1.2.8"
+			"value" : "1.2.6.1"
 		},
 		{
 			"name" : "ALSA_alsa_INCLUDEDIR",
@@ -475,7 +475,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/james/Documents/GuitarPi/build"
+			"value" : "/home/ubuntu/projects/GuitarPi/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -499,7 +499,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "25"
+			"value" : "22"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -579,7 +579,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/lib/ccache/c++"
+			"value" : "/usr/bin/c++"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
@@ -830,18 +830,6 @@
 			"value" : ""
 		},
 		{
-			"name" : "CMAKE_FIND_PACKAGE_REDIRECTS_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake."
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/home/james/Documents/GuitarPi/build/CMakeFiles/pkgRedirects"
-		},
-		{
 			"name" : "CMAKE_GENERATOR",
 			"properties" : 
 			[
@@ -899,7 +887,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/james/Documents/GuitarPi"
+			"value" : "/home/ubuntu/projects/GuitarPi"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1187,7 +1175,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/share/cmake-3.25"
+			"value" : "/usr/share/cmake-3.22"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1447,7 +1435,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/james/Documents/GuitarPi/build"
+			"value" : "/home/ubuntu/projects/GuitarPi/build"
 		},
 		{
 			"name" : "GuitarPi_IS_TOP_LEVEL",
@@ -1471,7 +1459,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/james/Documents/GuitarPi"
+			"value" : "/home/ubuntu/projects/GuitarPi"
 		},
 		{
 			"name" : "PKG_CONFIG_ARGN",
@@ -1504,18 +1492,6 @@
 			],
 			"type" : "FILEPATH",
 			"value" : "/usr/bin/pkg-config"
-		},
-		{
-			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "linker supports push/pop state"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "TRUE"
 		},
 		{
 			"name" : "__pkg_config_arguments_ALSA",

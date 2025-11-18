@@ -12,7 +12,6 @@
 #include "pedals/echo_pedal.h"
 #include "pedals/fuzz_pedal.h"
 #include "pedals/highpass_pedal.h"
-#include "pedals/looper_pedal.h"
 #include "pedals/lowpass_pedal.h"
 #include "pedals/reverb_pedal.h"
 #include "pedals/reverse_delay_pedal.h"

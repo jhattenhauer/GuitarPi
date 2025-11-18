@@ -1,4 +1,4 @@
-CMakeFiles/main.dir/main.cpp.o: /home/james/Documents/GuitarPi/main.cpp \
+CMakeFiles/main.dir/main.cpp.o: /home/ubuntu/projects/GuitarPi/main.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -151,7 +151,7 @@ CMakeFiles/main.dir/main.cpp.o: /home/james/Documents/GuitarPi/main.cpp \
  /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/chrono \
  /usr/include/c++/11/ratio /usr/include/c++/11/limits \
  /usr/include/c++/11/ctime /usr/include/c++/11/bits/parse_numbers.h \
- /home/james/Documents/GuitarPi/libraries/alsa_utils.h \
+ /home/ubuntu/projects/GuitarPi/libraries/alsa_utils.h \
  /usr/include/alsa/asoundlib.h /usr/include/unistd.h \
  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
@@ -206,7 +206,7 @@ CMakeFiles/main.dir/main.cpp.o: /home/james/Documents/GuitarPi/main.cpp \
  /usr/include/c++/11/bits/invoke.h /usr/include/c++/11/bits/refwrap.h \
  /usr/include/c++/11/bits/unique_ptr.h \
  /usr/include/c++/11/bits/this_thread_sleep.h \
- /home/james/Documents/GuitarPi/libraries/apply_effects.h \
+ /home/ubuntu/projects/GuitarPi/libraries/apply_effects.h \
  /usr/include/c++/11/fstream /usr/include/c++/11/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
@@ -341,16 +341,15 @@ CMakeFiles/main.dir/main.cpp.o: /home/james/Documents/GuitarPi/main.cpp \
  /usr/include/c++/11/optional /usr/include/c++/11/memory_resource \
  /usr/include/c++/11/bits/uses_allocator_args.h \
  /usr/include/c++/11/variant \
- /home/james/Documents/GuitarPi/libraries/json.hpp \
+ /home/ubuntu/projects/GuitarPi/libraries/json.hpp \
  /usr/include/c++/11/version \
- /home/james/Documents/GuitarPi/libraries/pedals/compressor_pedal.h \
- /home/james/Documents/GuitarPi/libraries/pedals/delay_pedal.h \
- /home/james/Documents/GuitarPi/libraries/pedals/detune.h \
- /home/james/Documents/GuitarPi/libraries/pedals/distortion_pedal.h \
- /home/james/Documents/GuitarPi/libraries/pedals/echo_pedal.h \
- /home/james/Documents/GuitarPi/libraries/pedals/fuzz_pedal.h \
- /home/james/Documents/GuitarPi/libraries/pedals/highpass_pedal.h \
- /home/james/Documents/GuitarPi/libraries/pedals/looper_pedal.h \
- /home/james/Documents/GuitarPi/libraries/pedals/lowpass_pedal.h \
- /home/james/Documents/GuitarPi/libraries/pedals/reverb_pedal.h \
- /home/james/Documents/GuitarPi/libraries/pedals/reverse_delay_pedal.h
+ /home/ubuntu/projects/GuitarPi/libraries/pedals/compressor_pedal.h \
+ /home/ubuntu/projects/GuitarPi/libraries/pedals/delay_pedal.h \
+ /home/ubuntu/projects/GuitarPi/libraries/pedals/detune.h \
+ /home/ubuntu/projects/GuitarPi/libraries/pedals/distortion_pedal.h \
+ /home/ubuntu/projects/GuitarPi/libraries/pedals/echo_pedal.h \
+ /home/ubuntu/projects/GuitarPi/libraries/pedals/fuzz_pedal.h \
+ /home/ubuntu/projects/GuitarPi/libraries/pedals/highpass_pedal.h \
+ /home/ubuntu/projects/GuitarPi/libraries/pedals/lowpass_pedal.h \
+ /home/ubuntu/projects/GuitarPi/libraries/pedals/reverb_pedal.h \
+ /home/ubuntu/projects/GuitarPi/libraries/pedals/reverse_delay_pedal.h

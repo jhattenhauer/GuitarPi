@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/james/Documents/GuitarPi/build",
-		"source" : "/home/james/Documents/GuitarPi"
+		"build" : "/home/ubuntu/projects/GuitarPi/build",
+		"source" : "/home/ubuntu/projects/GuitarPi"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 4
+		"minor" : 3
 	}
 }

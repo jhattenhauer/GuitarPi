@@ -11,13 +11,13 @@ int main(int argc, char* argv[]) {
     char* playback_endpoint = NULL; //pass argument alsa endpoint ex: "hw:1,0"
 
     if (argc == 0){
-        std::cout << "Please pass arguments as: './main capture playback'" << std:endl;
+        std::cout << "Please pass arguments as: './main capture playback'" << std::endl;
         return 0;
     }
 
     if (argc != 0){ //need to pass both input and output
-    try{capture_endpoint = argv[1];} catch {std::cout << "Pass capture point as 'hw:3,0'" << std::endl;}
-    try{playback_endpoint = argv[2];} catch {std::cout << "Pass playback point as 'hw:1,0'" << std::endl;}
+    try {capture_endpoint = argv[1];} catch (int e) {std::cout << "Pass capture point as 'hw:3,0'" << std::endl;}
+    try {playback_endpoint = argv[2];} catch (int e) {std::cout << "Pass playback point as 'hw:1,0'" << std::endl;}
     }
 
     if (InitCapture(NULL)){
