@@ -1,7 +1,6 @@
 //pass by value to avoid duping signal
 //allows for inline signal processing
 
-//create a delay buffer, hold it for delay and add output to input
 void delayFx(float &inputSample) {
     constexpr float sampleRate = 44100.0f;
     constexpr float delayTimeSec = 0.5f; // 500 ms
