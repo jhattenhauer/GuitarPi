@@ -3,12 +3,8 @@
 #include <algorithm>  // for std::min, std::max
 #include <cmath>      // for fabs
 
-void compressor_func(float& input)
+void compressor_func(float& input, float threshold = 0.5f, float ratio = 4.0f, float makeup_gain = 1.2f)
 {
-    float threshold = 0.5f;  
-    float ratio = 4.0f;      
-    float makeup_gain = 1.2f; 
-
     float abs_input = std::fabs(input);
 
     if (abs_input > threshold)

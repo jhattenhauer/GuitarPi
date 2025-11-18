@@ -1,11 +1,7 @@
 #include <vector>
 #include <cmath>
 
-void reverseDelayFx(float &inputSample) {
-    constexpr float sampleRate = 44100.0f;
-    constexpr float delayTimeSec = 0.5f; // 500 ms
-    constexpr float mix = 0.5f;
-
+void reverseDelayFx(float &inputSample, float sampleRate = 44100.0f, float delayTimeSec = 0.5f, float mix = 0.5f) {
     static std::vector<float> buffer(static_cast<int>(sampleRate * delayTimeSec), 0.0f);
     static int writeIndex = 0;
     static bool bufferFull = false;
