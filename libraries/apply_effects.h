@@ -126,7 +126,7 @@ void apply_effects(std::vector<float>& sample){
     for (float peiceOfSample: sample){
         if (PedalSettings.compressor_enabled == 1) {distortion_pedal_func(peiceOfSample);}
 //        if (PedalSettings.delay_enabled == 1) {delay_pedal_func()}
-//        if (PedalSettings.detune_enabled == 1) {detuen_func()}
+//        if (PedalSettings.detune_enabled == 1) {detune_func()}
 //        if (PedalSettings.distortion_enabled == 1) {distortion_pedal_func()}
 //        if (PedalSettings.echo_enabled == 1) {echo_pedal_func()}
 //        if (PedalSettings.fuzz_enabled == 1) {fuzz_pedal_func()}
