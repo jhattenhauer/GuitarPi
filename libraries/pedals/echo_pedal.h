@@ -2,7 +2,7 @@
 #include <vector>
 #include <cmath>
 
-float echoFx(float inputSample, float sampleRate = 44100.0f, float delayTimeSec = 0.7f, float feedback = 0.6f, float mix = 0.5f) {
+float echo_pedal_func(float inputSample, float sampleRate = 44100.0f, float delayTimeSec = 0.7f, float feedback = 0.6f, float mix = 0.5f) {
  
     static std::vector<float> buffer(static_cast<int>(sampleRate * delayTimeSec), 0.0f);
     static int writeIndex = 0;

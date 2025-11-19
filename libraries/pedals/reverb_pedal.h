@@ -1,7 +1,7 @@
 #include <vector>
 #include <cmath>
 
-void reverbFx(float &inputSample, float feedback = 0.5f, float mix = 0.5f, float sampleRate = 44100.0f) {
+void reverb_pedal_func(float &inputSample, float feedback = 0.5f, float mix = 0.5f, float sampleRate = 44100.0f) {
     constexpr int numTaps = 4;
     constexpr float delayTimes[numTaps] = {0.029f, 0.037f, 0.041f, 0.053f};
 

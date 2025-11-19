@@ -1,7 +1,7 @@
 #include <cmath>
 
 // Simple low-pass filter
-void lowpass_pedal(float& input, float cutoff, float sampleRate)
+void lowpass_pedal_func(float& input, float cutoff, float sampleRate)
 {
     static float prevOutput = 0.0f;
 
