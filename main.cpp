@@ -5,7 +5,7 @@
 #include "libraries/alsa_utils.h"
 #include "libraries/apply_effects.h"
 
-int main(int argc, char* argv[]) {
+int func(int argc, char* argv[]) {
 
     char* capture_endpoint = NULL; //pass argument alsa endpoint ex: "hw:3,0"
     char* playback_endpoint = NULL; //pass argument alsa endpoint ex: "hw:1,0"
@@ -20,9 +20,9 @@ int main(int argc, char* argv[]) {
     try {playback_endpoint = argv[2];} catch (int e) {std::cerr << "Pass playback point as 'hw:1,0'" << std::endl;}
     }
 
-    if (InitCapture(NULL)){
+    if (InitCapture(capture_endpoint)){
         std::cout << "Starting Recording..." << std::endl;
-        if (InitPlayback(NULL)){
+        if (InitPlayback(playback_endpoint)){
             std::cout << "Starting Playback..." << std::endl;
             while(true){
                 std::vector<int32_t> sample = CaptureSample();
@@ -38,3 +38,6 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
+int main(){
+    read_settings();
+}

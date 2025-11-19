@@ -12,6 +12,7 @@ add_executable(main main.cpp)
 # Include directories
 target_include_directories(main PRIVATE
     ${ALSA_INCLUDE_DIRS}
+    ${CMAKE_SOURCE_DIR}/libraries
 )
 
 # Link libraries

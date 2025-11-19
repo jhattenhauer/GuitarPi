@@ -2,98 +2,51 @@
   "pedal_settings": [
     {
       "compressor_enabled": 1,
-      "compressor_threshold": 0.7,
-      "compressor_ratio": 0.9,
-      "compressor_makeup_gain": 0.6,
+      "compressor_threshold": 1,
+      "compressor_ratio": 1,
+      "compressor_makeup_gain": 1,
 
       "delay_enabled": 1,
-      "delay_sampleRate": 44100.0,
-      "delay_delayTimeSec": 0.7,
-      "delay_feedback": 0.5,
-      "delay_mix": 0.5,
+      "delay_sampleRate": 1,
+      "delay_delayTimeSec": 1,
+      "delay_feedback": 1,
+      "delay_mix": 1,
 
       "detune_enabled": 1,
-      "detune_detuneAmount": 1200,
-      "detune_phase": 0.8,
-      "detune_sampleRate": 0,
-      "detune_baseFreq": 0,
+      "detune_detuneAmount": 1,
+      "detune_phase": 1,
+      "detune_sampleRate": 1,
+      "detune_baseFreq": 1,
 
       "distortion_enabled": 1,
       "distortion_gain": 1,
 
       "echo_enabled": 1,
-      "echo_sampleRate": 44100.0,
-      "echo_delayTimeSec": 0.7,
-      "echo_feedback": 0.5,
-      "echo_mix": 0.5,
+      "echo_sampleRate": 1,
+      "echo_delayTimeSec": 1,
+      "echo_feedback": 1,
+      "echo_mix": 1,
 
       "fuzz_enabled": 1,
-      "fuzz_gain": 1200,
+      "fuzz_gain": 1,
 
       "highpass_enabled": 1,
-      "highpass_cutoff": 1200,
-      "highpass_sampleRate": 0.8,
+      "highpass_cutoff": 1,
+      "highpass_sampleRate": 1,
 
       "lowpass_enabled": 1,
-      "lowpass_cutoff": 1200,
-      "lowpass_sampleRate": 0.8,
+      "lowpass_cutoff": 1,
+      "lowpass_sampleRate": 1,
 
       "reverb_enabled": 1,
-      "reverb_sampleRate": 44100.0,
-      "reverb_feedback": 0.5,
-      "reverb_mix": 0.5,
+      "reverb_sampleRate": 1,
+      "reverb_feedback": 1,
+      "reverb_mix": 1,
 
       "reverse_enabled": 1,
-      "reverse_sampleRate": 44100.0,
-      "reverse_delayTimeSec": 0.7,
-      "reverse_mix": 0.5
+      "reverse_sampleRate": 1,
+      "reverse_delayTimeSec": 1,
+      "reverse_mix": 1
     }
   ]
 }
-
-"compressor_enabled"
-"compressor_threshold"
-"compressor_ratio"
-"compressor_makeup_gain"
-
-"delay_enabled"
-"delay_sampleRate"
-"delay_delayTimeSec"
-"delay_feedback"
-"delay_mix"
-
-"detune_enabled"
-"detune_detuneAmount"
-"detune_phase"
-"detune_sampleRate"
-"detune_baseFreq"
-
-"distortion_enabled"
-"distortion_gain"
-
-"echo_enabled"
-"echo_sampleRate"
-"echo_delayTimeSec"
-"echo_feedback"
-"echo_mix"
-
-"fuzz_enabled"
-"fuzz_gain"
-
-"highpass_enabled"
-"highpass_cutoff"
-"highpass_sampleRate"
-
-"lowpass_enabled"
-"lowpass_cutoff",
-"lowpass_sampleRate"
-
-"reverb_enabled"
-"reverb_sampleRate"
-"reverb_feedback"
-"reverb_mix"
-      
-"reverse_enabled"
-"reverse_sampleRate"
-"reverse_delayTimeSec"
-"reverse_mix"
