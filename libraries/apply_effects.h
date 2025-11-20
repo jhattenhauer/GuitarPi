@@ -20,8 +20,6 @@
 #include "json.hpp"
 using json = nlohmann::json;
 
-PedalSettingsStruct PedalSettings;
-
 void read_settings(PedalSettingsStruct& PedalSettings){
 
     std::ifstream file("../libraries/pedalSettings.json");
@@ -122,7 +120,7 @@ void read_settings(PedalSettingsStruct& PedalSettings){
 
 }
 
-void apply_effects(std::vector<float>& sample){
+void apply_effects(std::vector<float>& sample, PedalSettingsStruct& PedalSettings){
     for (float peiceOfSample: sample){
         if (PedalSettings.compressor_enabled == 1) {distortion_pedal_func(peiceOfSample);}
 //        if (PedalSettings.delay_enabled == 1) {delay_pedal_func()}

@@ -20,6 +20,8 @@ int main(int argc, char* argv[]) {
     try {playback_endpoint = argv[2];} catch (int e) {std::cerr << "Pass playback point as 'hw:1,0'" << std::endl;}
     }
 
+    
+    PedalSettingsStruct PedalSettings;
     int update_settings_count = 0;
 
     if (InitCapture(capture_endpoint)){
@@ -29,13 +31,13 @@ int main(int argc, char* argv[]) {
             while(true){
                 update_settings_count += 1;
                 if (update_settings_count == 1000) {
-                    read_settings();
+                    read_settings(PedalSettings);
                     update_settings_count = 0;
                 }
 
                 std::vector<int32_t> sample = CaptureSample();
                 std::vector<float> floatSample = Int_to_Float(sample);
-                apply_effects(floatSample);
+                apply_effects(floatSample, PedalSettings);
                 sample = Float_to_Int(floatSample); 
                 PlaybackSamples(_playbackDevice, sample, 4);                
             }
