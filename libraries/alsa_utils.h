@@ -36,10 +36,10 @@ bool InitCapture(const char* name){ //setup alsa capture device
 
 snd_pcm_t* _playbackDevice = nullptr;
 
-bool InitPlayback(const char* name){ //setup alsa playback device //pretty much same function but may need to mod later
+bool InitPlayback(const char* name = "hw:3,0"){ //setup alsa playback device //pretty much same function but may need to mod later
     int err;
     snd_pcm_hw_params_t* hw_params;
-    err = snd_pcm_open(&_playbackDevice, name ? name : "hw:3,0", SND_PCM_STREAM_PLAYBACK, 0);
+    err = snd_pcm_open(&_playbackDevice, name, SND_PCM_STREAM_PLAYBACK, 0);
     if (err < 0) {
         std::cerr << "Cannot open audio device for playback )" << snd_strerror(err) << ")" << std::endl;
         return false;
