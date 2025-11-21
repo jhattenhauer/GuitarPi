@@ -1,52 +1,52 @@
 {
   "pedal_settings": [
     {
-      "compressor_enabled": 1,
+      "compressor_enabled": 0,
       "compressor_threshold": 1,
-      "compressor_ratio": 1,
-      "compressor_makeup_gain": 1,
+      "compressor_ratio": 0.5,
+      "compressor_makeup_gain": 1.25,
 
-      "delay_enabled": 1,
-      "delay_sampleRate": 1,
-      "delay_delayTimeSec": 1,
-      "delay_feedback": 1,
-      "delay_mix": 1,
+      "delay_enabled": 0,
+      "delay_sampleRate": 44100,
+      "delay_delayTimeSec": 0.5,
+      "delay_feedback": 0.6,
+      "delay_mix": 0.5,
 
-      "detune_enabled": 1,
+      "detune_enabled":  0,
       "detune_detuneAmount": 1,
       "detune_phase": 1,
-      "detune_sampleRate": 1,
-      "detune_baseFreq": 1,
+      "detune_sampleRate": 44100,
+      "detune_baseFreq": 400,
 
-      "distortion_enabled": 1,
-      "distortion_gain": 1,
+      "distortion_enabled":  1,
+      "distortion_gain": 5,
 
-      "echo_enabled": 1,
-      "echo_sampleRate": 1,
-      "echo_delayTimeSec": 1,
-      "echo_feedback": 1,
-      "echo_mix": 1,
+      "echo_enabled":  0,
+      "echo_sampleRate": 44100,
+      "echo_delayTimeSec": 0.5,
+      "echo_feedback": 0.8,
+      "echo_mix": 0.5,
 
-      "fuzz_enabled": 1,
-      "fuzz_gain": 1,
+      "fuzz_enabled":  0,
+      "fuzz_gain": 3,
 
-      "highpass_enabled": 1,
-      "highpass_cutoff": 1,
-      "highpass_sampleRate": 1,
+      "highpass_enabled":  0,
+      "highpass_cutoff": 0.3,
+      "highpass_sampleRate": 44100,
 
-      "lowpass_enabled": 1,
-      "lowpass_cutoff": 1,
-      "lowpass_sampleRate": 1,
+      "lowpass_enabled":  0,
+      "lowpass_cutoff": 0.7,
+      "lowpass_sampleRate": 44100,
 
-      "reverb_enabled": 1,
-      "reverb_sampleRate": 1,
-      "reverb_feedback": 1,
-      "reverb_mix": 1,
+      "reverb_enabled":  0,
+      "reverb_sampleRate": 44100,
+      "reverb_feedback": 0.6,
+      "reverb_mix": 0.5,
 
-      "reverse_enabled": 1,
-      "reverse_sampleRate": 1,
-      "reverse_delayTimeSec": 1,
-      "reverse_mix": 1
+      "reverse_enabled":  0,
+      "reverse_sampleRate": 44100,
+      "reverse_delayTimeSec": 0.5,
+      "reverse_mix": 0.5
     }
   ]
 }

@@ -41,7 +41,7 @@ int main(int argc, char* argv[]) {
 
                 std::vector<int32_t> sample = CaptureSample();
                 for (int32_t samp: sample){
-                    std::cout << samp <<std::endl;
+                    std::cout << samp << std::endl;
                 }
                 //std::vector<float> floatSample = Int_to_Float(sample);
                 //apply_effects(floatSample, PedalSettings);
